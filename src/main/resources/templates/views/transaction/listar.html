@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="plantilla/template :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+<div class="container">
+    <h1 th:text="${titulo}"></h1>
+</div>
+<div class="container">
+    <a class="btn btn-primary btn" th:href="@{/views/transaction/crear}" th:text="'New transaction'"></a>
+    <br>
+    <br>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">concept</th>
+            <th scope="col">amount</th>
+            <th scope="col">createdAt</th>
+            <th scope="col">updatedAt</th>
+            <th scope="col">Options</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tr:${transaction}">
+            <th scope="row" th:text="${tr.id}"></th>
+            <td th:text="${tr.concept}"></td>
+            <td th:text="${tr.amount}"></td>
+            <td th:text="${tr.createdAt}"></td>
+            <td th:text="${tr.updatedAt}"></td>
+            <td>
+                <a class="btn btn-success" th:href="@{/views/transaction/edit/}+${tr.id}" th:text="'Editar'"></a>
+                <a class="btn btn-danger" th:href="@{/views/transaction/delete/}+${tr.id}" th:text="'Eliminar'"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="plantilla/template :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+<div class="container">
+    <h1 th:text="${titulo}"></h1>
+</div>
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" th:href="@{/views/enterprise/crear}"
+       th:text="'Nueva Empresa'" title="Crear nuevo registro">
+    </a>
+
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">F_creación</th>
+            <th scope="col">F_actualización</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="en:${enterprise}">
+            <th scope="row" th:text="${en.id}"></th>
+            <td th:text="${en.name}"></td>
+            <td th:text="${en.document}"></td>
+            <td th:text="${en.phone}"></td>
+            <td th:text="${en.address}"></td>
+            <td th:text="${en.createdAt}"></td>
+            <td th:text="${en.updateAt}"></td>
+            <td>
+                <a class="btn btn-success" th:href="@{/views/enterprise/editar/}+${en.id}" title="Editar registro">Update</a>
+                <a class="btn btn-danger" th:href="@{/views/enterprise/eliminar/}+${en.id}" title="Eliminar registro">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

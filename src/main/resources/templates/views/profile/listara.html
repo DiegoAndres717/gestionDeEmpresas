@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="plantilla/template :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+<div class="container">
+    <h1 th:text="${titulo}"></h1>
+</div>
+<div class="container">
+    <a class="btn btn-primary btn" th:href="@{/views/profile/crea}" th:text="'New profile'"></a>
+    <br>
+    <br>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">image</th>
+            <th scope="col">phone</th>
+            <th scope="col">createdAt</th>
+            <th scope="col">updatedAt</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tr:${profile}">
+            <th scope="row" th:text="${tr.id}"></th>
+            <td th:text="${tr.image}"></td>
+            <td th:text="${tr.phone}"></td>
+            <td th:text="${tr.createdAt}"></td>
+            <td th:text="${tr.updatedAt}"></td>
+            <td>
+                <a class="btn btn-success" th:href="@{/views/profile/edit/}+${tr.id}" th:text="'Editar'"></a>
+                <a class="btn btn-danger" th:href="@{/views/profile/delete/}+${tr.id}" th:text="'Eliminar'"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

@@ -22,6 +22,9 @@ public class Transaccion {
     //private Empresa empresa;
     private Date createdAt;
     private Date updateAt;
+
+    public Transaccion() {
+    }
     /*
     @ManyToOne
     @JoinColumn(name = "idEmpleado")
