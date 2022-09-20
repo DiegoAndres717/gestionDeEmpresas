@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset = "UTF-8">
+    <title>Editar Transacciones</title>
+</head>
+<body>
+<section th:fragment="editarTran">
+    <form th:action="@{/guardarTran}" th:object="${transaccion}" method="post" class="was-validated">
+	  <input type="hidden" name="id" th:field="*{id}"/>
+	  <section th:replace="Layout/botones/botonesEditarTran :: botonesEditarTran"></section>
+	  <div id="details">
+		<div class="container">
+		    <div class="row">
+			  <div class="col">
+				<div class="card">
+				    <div class="card-header">
+					  <h4 [[#{accion.editar}]]></h4>
+				    </div>
+				    <div class="card-body">
+					  <div class="form-group">
+						<label for = "concepto">[[#{tran.concepto}]]</label>
+						<input type="text" class="form-control" name="concepto"
+							 required="true" th:field="*{concepto}"/>
+					  </div>
+					  <div class="form-group">
+						<label for = "monto">[[#{tran.monto}]]</label>
+						<input type="number" class="form-control"
+							 name="monto" required="true" th:field="*{monto}"/>
+					  </div>
+					  <div class="form-group">
+						<label for = "createAt">[[#{tran.fecha}]]</label>
+						<input type="date" class="form-control" name="createAt"
+							 required="true" th:field="*{createAt}"/>
+					  </div>
+				    </div>
+				</div>
+			  </div>
+		    </div>
+		</div>
+	  </div>
+    </form>
+</section>
+</body>
+</html>

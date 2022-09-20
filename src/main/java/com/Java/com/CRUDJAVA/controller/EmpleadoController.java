@@ -1,53 +1,60 @@
 package com.Java.com.CRUDJAVA.controller;
 
 import com.Java.com.CRUDJAVA.model.Empleado;
-import com.Java.com.CRUDJAVA.model.Mensaje;
 import com.Java.com.CRUDJAVA.service.EmpleadoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
-@RestController
-@RequestMapping ("/api")
+@Controller
+@Slf4j
 public class EmpleadoController {
+
     @Autowired
     private EmpleadoService empleadoService;
 
-    @GetMapping ("/buscar/empleados")
-    public List<Empleado> mostrarEmpleados(){
-
-        return empleadoService.mostrarEmpleado();
+    @GetMapping("/")
+    public String inicio(Model model, @AuthenticationPrincipal User user){
+        log.info("ejecutando el controlador Principal");
+        return "principal";
     }
 
-    @GetMapping ("/empleado/{id}")
-    public ResponseEntity<Empleado> buscarEmpleado(@PathVariable("id") Long id){
-        if (!empleadoService.existsByIdEmpleado(id)){
-            return new ResponseEntity(new Mensaje("No existe el  empleado"), HttpStatus.NOT_FOUND);
-        }else {
-            Empleado empleado = empleadoService.getEmpleado(id).get();
-            return new ResponseEntity(empleado, HttpStatus.OK);
-        }
-
+    @GetMapping("/usuarios")
+    public String principal(Model model,  @AuthenticationPrincipal User user){
+        var empleados = empleadoService.listaPersonaas();
+        log.info("ejecutando el controlador Spring MVC");
+        log.info("Usuario que hizo login: " + user);
+        model.addAttribute("empleados", empleados);
+        model.addAttribute("totalUsuarios", empleados.size());
+        return "index2";
     }
 
-    @PostMapping (path = "/insertarEmpleadoJPA", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity <Boolean> insertarPersona (@RequestBody Empleado empleado){
-
-        return new ResponseEntity<Boolean>(empleadoService.insertarPersonaJPA(empleado), HttpStatus.OK)  ;
-    }
-    @PutMapping (path = "/actualizarTodoJPA", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> actualizarTodoJPA (@RequestBody Empleado empleado){
-
-        return new ResponseEntity<Boolean> (empleadoService.actualizarTodoJPA(empleado), HttpStatus.OK);
-
+    @GetMapping("/agregar")
+    public String agregar(Empleado empleado){
+        return "modificar";
     }
 
-    @DeleteMapping("/borrarEmpleadoJPA/{id}")
-    public void borrarPersonaJPA(@PathVariable("id") Long id) {
-        empleadoService.deleteEmpleadoById(id);
+    @PostMapping("/guardar")
+    public String guardar(Empleado empleado){
+        empleadoService.guardar(empleado);
+        return  "redirect:/usuarios";
     }
+    @GetMapping("/editar/{idEmpleado}")
+    public String editar(Empleado empleado, Model model){
+        empleado = empleadoService.buscar(empleado);
+        model.addAttribute("empleado", empleado);
+        return "modificar";
+    }
+
+    @GetMapping("/eliminar")
+    public String eliminar(Empleado empleado){
+        empleadoService.eliminar(empleado);
+        return "redirect:/usuarios";
+    }
+
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -16,15 +17,13 @@ import java.util.Date;
 public class Empresa {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
         private String  nombre;
         private String  documento;
         private String  telefono;
         private String  direccion;
 
-        //private Usuario[] usuarios;
-        //private Transaccion[] transaccion;
         private Date createdAt;
         private Date updateAt;
 

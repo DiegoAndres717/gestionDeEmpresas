@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset = "UTF-8">
+    <title>Agregar Transacciones</title>
+</head>
+<body>
+<section th:fragment = "agregarTran">
+    <div id = "agregarTran" class = "modal fade">
+	  <div class = "modal-dialog modal-lg">
+		<div class = "modal-content">
+		    <div class = "modal-header bg-info text-white">
+			  <h5 class = "modal-title" th:text = "#{accion.agregar}">Agregar Usuario</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+				<span>&times;</span>
+			  </button>
+		    </div>
+		    <form th:action = "@{/guardarTran}" th:object = "${transaccion}" method = "post" class = "was-validated">
+			  <div class = "modal-body">
+				<div class = "form-group">
+				    <label for = "nombre" th:text = "#{tran.concepto}">Concepto</label>
+				    <input type = "text" class = "form-control" name = "transaccion.concepto" required = "true">
+				</div>
+				<div class = "form-group">
+				    <label for = "monto" th:text = "#{tran.monto}">Monto</label>
+				    <input type = "number" class = "form-control" name = "transaccion.monto" required = "true">
+				</div>
+				<div class = "form-group">
+				    <label for = "createAt" th:text = "#{tran.fecha}">Fecha</label>
+				    <input type = "date" class = "form-control" name = "transaccion.createAt" required = "true">
+				</div>
+			  </div>
+			  <div class = "modal-footer">
+				<button class = "btn btn-primary" type = "submit" th:text = "#{accion.guardar}">Guardar</button>
+			  </div>
+		    </form>
+		</div>
+	  </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="Layout/plantilla :: head">>
+    <meta charset = "UTF-8">
+    <title>Principal</title>
+</head>
+<body>
+<header th:replace="Layout/plantilla :: header"></header>
+<div class="card text-center">
+    <div class="card-header">
+	  Featured
+    </div>
+    <div class="card-body">
+	  <h5 class="card-title">Special title treatment</h5>
+	  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	  <a th:href="@{/usuarios}" class="btn btn-primary">Usuarios</a>
+    </div>
+    <div class="card-footer text-muted">
+	  2 days ago
+    </div>
+</div>
+<div class="card text-center">
+    <div class="card-header">
+	  Featured
+    </div>
+    <div class="card-body">
+	  <h5 class="card-title">Special title treatment</h5>
+	  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	  <a th:href="@{/tran}" class="btn btn-primary">Transaaciones</a>
+    </div>
+    <div class="card-footer text-muted">
+	  2 days ago
+    </div>
+</div>
+</body>
+</html>

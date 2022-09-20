@@ -14,12 +14,16 @@ import java.util.Date;
 @Table(name = "transaccion")
 public class Transaccion {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String  concepto;
     private String  monto;
-    //private Usuario usuario;
-    //private Empresa empresa;
+    @ManyToOne
+    @JoinColumn(name = "idEmpleado")
+    private Empleado empleado;
+    @ManyToOne
+    @JoinColumn(name = "idEmpresa")
+    private Empresa empresa;
     private Date createdAt;
     private Date updateAt;
 

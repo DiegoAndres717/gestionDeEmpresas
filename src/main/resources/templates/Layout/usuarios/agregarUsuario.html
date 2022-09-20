@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset = "UTF-8">
+    <title>Agregar Usuarios</title>
+</head>
+<body>
+<section th:fragment = "agregarUsuario">
+    <div id = "agregarUsuario" class = "modal fade">
+	  <div class = "modal-dialog modal-lg">
+		<div class = "modal-content">
+		    <div class = "modal-header bg-info text-white">
+			  <h5 class = "modal-title" th:text = "#{accion.agregar}">Agregar Usuario</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+				<span>&times;</span>
+			  </button>
+		    </div>
+		    <form th:action = "@{/guardar}" th:object = "${empleado}" method = "post" class = "was-validated">
+			  <div class = "modal-body">
+				<div class = "form-group">
+				    <label for = "nombre" th:text = "#{empleado.nombre}">Nombre</label>
+				    <input type = "text" class = "form-control" name = "empleado.perfil.nombre" required = "true">
+				</div>
+				<div class = "form-group">
+				    <label for = "email" th:text = "#{empleado.email}">Email</label>
+				    <input type = "email" class = "form-control" name = "email" required = "true">
+				</div>
+				<div class = "form-group">
+				    <label for = "telefono" th:text = "#{empleado.telefono}">Telefono</label>
+				    <input type = "tel" class = "form-control" name = "empleado.perfil.telefono" required = "true">
+				</div>
+			  </div>
+			  <div class = "modal-footer">
+				<button class = "btn btn-primary" type = "submit" th:text = "#{accion.guardar}">Guardar</button>
+			  </div>
+		    </form>
+		</div>
+	  </div>
+    </div>
+</section>
+</body>
+</html>

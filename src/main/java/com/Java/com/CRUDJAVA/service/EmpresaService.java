@@ -1,9 +1,7 @@
 package com.Java.com.CRUDJAVA.service;
 
-import com.Java.com.CRUDJAVA.model.Empleado;
 import com.Java.com.CRUDJAVA.model.Empresa;
-import com.Java.com.CRUDJAVA.repository.IEmpleado;
-import com.Java.com.CRUDJAVA.repository.IEmpresa;
+import com.Java.com.CRUDJAVA.Dao.IEmpresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,5 @@
-package com.Java.com.CRUDJAVA.repository;
+package com.Java.com.CRUDJAVA.Dao;
 
-import com.Java.com.CRUDJAVA.model.Empleado;
 import com.Java.com.CRUDJAVA.model.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
