@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html xmlns = "http://www.w3.org/1999/xhtml"
 	xmlns:th = "http://www.thymeleaf.org"
-	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="Layout/plantilla :: head">>
+>
+<head th:replace = "Layout/plantilla :: head">>
     <meta charset = "UTF-8">
     <title>Principal</title>
 </head>
 <body>
-<header th:replace="Layout/plantilla :: header"></header>
-<div class="card text-center">
-    <div class="card-header">
+<header th:replace = "Layout/plantilla :: headerP"></header>
+<div class = "card text-center">
+    <div class = "card-header">
 	  Featured
     </div>
-    <div class="card-body">
-	  <h5 class="card-title">Special title treatment</h5>
-	  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-	  <a th:href="@{/usuarios}" class="btn btn-primary">Usuarios</a>
+    <div class = "card-body">
+	  <h5 class = "card-title">Special title treatment</h5>
+	  <p class = "card-text">With supporting text below as a natural lead-in to additional content.</p>
+	  <a class = "btn btn-primary" th:href = "@{/usuarios}">Usuarios</a>
     </div>
-    <div class="card-footer text-muted">
+    <div class = "card-footer text-muted">
 	  2 days ago
     </div>
 </div>
-<div class="card text-center">
-    <div class="card-header">
+<div class = "card text-center">
+    <div class = "card-header">
 	  Featured
     </div>
-    <div class="card-body">
-	  <h5 class="card-title">Special title treatment</h5>
-	  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-	  <a th:href="@{/tran}" class="btn btn-primary">Transaaciones</a>
+    <div class = "card-body">
+	  <h5 class = "card-title">Special title treatment</h5>
+	  <p class = "card-text">With supporting text below as a natural lead-in to additional content.</p>
+	  <a class = "btn btn-primary" th:href = "@{/transacciones}">Transaaciones</a>
     </div>
-    <div class="card-footer text-muted">
+    <div class = "card-footer text-muted">
 	  2 days ago
     </div>
 </div>
+<div class = "card text-center">
+    <div class = "card-header">
+	  Featured
+    </div>
+    <div class = "card-body">
+	  <h5 class = "card-title">Special title treatment</h5>
+	  <p class = "card-text">With supporting text below as a natural lead-in to additional content.</p>
+	  <a class = "btn btn-primary" th:href = "@{/empresas}">Empresas</a>
+    </div>
+    <div class = "card-footer text-muted">
+	  2 days ago
+    </div>
+</div>
+<footer th:replace = "Layout/plantilla :: footer"></footer>
 </body>
 </html>

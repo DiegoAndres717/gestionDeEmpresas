@@ -3,13 +3,14 @@
 	xmlns:th = "http://www.thymeleaf.org"
 >
 <head th:replace = "Layout/plantilla :: head">
+    <title>Inicio</title>
     <meta charset = "UTF-8">
-    <title>Modificar</title>
 </head>
 <body>
 <header th:replace = "Layout/plantilla :: headerGestion"></header>
-<!--	<section th:replace="Layout/transacciones/editarTran :: editarTran"></section>-->
-<section th:replace = "Layout/usuarios/editarUsuario :: editarUsuario"></section>
+<section th:replace = "Layout/botones/botonesAgregar :: botonesAgregar"></section>
+<section th:replace = "Layout/usuarios/agregarUsuario :: agregarUsuario"></section>
+<section th:replace = "Layout/usuarios/listaUsuarios :: listaUsuarios"></section>
 <footer th:replace = "Layout/plantilla :: footer"></footer>
 
 </body>

@@ -7,13 +7,13 @@
     <title>Botones Agregar</title>
 </head>
 <body>
-<section class = "py-4 mb-4 bg-light" th:fragment = "botonesAgregar">
+<section class = "py-4 mb-4 bg-light" th:fragment = "botonesAgregarEmpre">
     <div class = "container">
 	  <div class = "row">
 		<div class = "col-md-3" sec:authorize = "hasRole('ROLE_ADMIN')">
-		    <a class = "btn btn-primary btn-block" data-bs-target = "#agregarUsuario"
+		    <a class = "btn btn-primary btn-block" data-bs-target = "#agregarEmpre"
 			 data-bs-toggle = "modal" href = "#">
-			  <i class = "fas fa-plus"></i> [[#{accion.agregar}]]
+			  <i class = "fas fa-plus"></i> [[#{empre.agregar}]]
 		    </a>
 		</div>
 	  </div>

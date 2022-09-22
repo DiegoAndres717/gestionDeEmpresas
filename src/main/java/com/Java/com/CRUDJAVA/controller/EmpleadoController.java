@@ -31,7 +31,7 @@ public class EmpleadoController {
         log.info("Usuario que hizo login: " + user);
         model.addAttribute("empleados", empleados);
         model.addAttribute("totalUsuarios", empleados.size());
-        return "index2";
+        return "homeUsuario";
     }
 
     @GetMapping("/agregar")

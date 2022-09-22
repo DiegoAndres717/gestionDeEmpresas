@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IEmpresa extends JpaRepository<Empresa,Long> {
-    @Override
-    List<Empresa> findAll();
+public interface EmpresaDao extends JpaRepository<Empresa,Long> {
+
 
 }

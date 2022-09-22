@@ -1,85 +1,85 @@
 <!DOCTYPE html>
 <html xmlns = "http://www.w3.org/1999/xhtml"
-	xmlns:th = "http://www.thymeleaf.org"
-	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security"
+	xmlns:th = "http://www.thymeleaf.org">
 <head>
     <meta charset = "UTF-8">
     <title>Lista de Transacciones</title>
 </head>
 <body>
-<section th:fragment="listaTran" id="transacciones">
-    <div class="container">
-	  <div class="row">
-		<div class="col-md-9">
-		    <div class="card">
-			  <div class="card-header">
-				<h4>[[#{empleado.lista}]]</h4>
+<section id = "transacciones" th:fragment = "listaTran">
+    <div class = "container">
+	  <div class = "row">
+		<div class = "col-md-9">
+		    <div class = "card">
+			  <div class = "card-header">
+				<h4>[[#{tran.lista}]]</h4>
 			  </div>
-			  <div th:if="${transacciones != null and !transacciones.empty}">
-				<table class="table table-stryped">
-				    <thead class="thead-dark">
+			  <div th:if = "${transacciones != null and !transacciones.empty}">
+				<table class = "table table-stryped">
+				    <thead class = "thead-dark">
 				    <tr>
 					  <th>#</th>
-					  <th th:text="#{tran.concepto}">Concepto</th>
-					  <th th:text="#{tran.monto}">Monto</th>
-					  <th th:text="#{tran.fecha}">Fecha</th>
+					  <th th:text = "#{tran.concepto}">Concepto</th>
+					  <th th:text = "#{tran.monto}">Monto</th>
+					  <th th:text = "#{tran.fecha}">Fecha</th>
 					  
 					  <th></th>
 					  <th></th>
 				    </tr>
 				    </thead>
 				    <tbody>
-				    <tr th:each="transaccion, contador : ${transacciones}">
+				    <tr th:each = "transaccion, contador : ${transacciones}">
 					  <td>[[${contador.count}]]</td>
-					  <td>[[${empleado.transancion.concepto}]]</td>
-					  <td>[[${new java.text.DecimalFormat('$#,##0.00').format(transancion.monto)}]]</td>
-					  <td>[[${transancion.createAt}]]</td>
+					  <td>[[${transaccion.concepto}]]</td>
+					  <td>[[${transaccion.monto}]]</td>
+					  <td>[[${transaccion.createdAt}]]</td>
 					  
 					  <td>
-						<a sec:authorize="hasRole('ROLE_ADMIN')" th:href =
-							  "@{/editarTran/} + ${transaccion.id}"
-						   class="btn btn-secundary">
-						    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+						<a class = "btn btn-secundary" sec:authorize = "hasRole('ROLE_ADMIN')"
+						   th:href =
+							  "@{/editarTran/} + ${transaccion.id}">
+						    <i class = "fas fa-angle-double-right"></i> [[#{accion.editar}]]
 						</a>
 					  </td>
 					  <td>
-						<a sec:authorize="hasRole('ROLE_ADMIN')" th:href =
-							  "@{/eliminarTran(id=${transaccion.id})}"
-						   class="btn btn-dark">
-						    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+						<a class = "btn btn-dark" sec:authorize = "hasRole('ROLE_ADMIN')"
+						   th:href =
+							  "@{/eliminarTran(id=${transaccion.id})}">
+						    <i class = "fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
 						</a>
 					  </td>
 				    </tr>
 				    </tbody>
 				</table>
 			  </div>
-			  <div class="text-center p-2" th:if="${transacciones == null or transacciones.empty}">
-				<sp th:text="#{transaccion.lista-vacia}">
+			  <div class = "text-center p-2" th:if = "${transacciones == null or transacciones.empty}">
+				<sp th:text = "#{transaccion.lista-vacia}">
 				    Lista vacia
 				</sp>
 			  </div>
 		    </div>
 		</div>
 		
-		<div class="col-md-3">
-		    <div class="card text-center bg-danger text-white mg-3">
-			  <div class="card-body">
-				<h3 th:text="#{transaccion.totalMonto}">Total Monto</h3>
-				<h4 class="display-4">
+		<div class = "col-md-3">
+		    <div class = "card text-center bg-danger text-white mg-3">
+			  <div class = "card-body">
+				<h3 th:text = "#{transaccion.totalMonto}">Total Monto</h3>
+				<h4 class = "display-4">
 				    [[${new java.text.DecimalFormat('$#,##0.00').format(totalMonto)}]]
 				</h4>
 			  </div>
-		    <div class="card text-center bg-success text-white mb-3">
-			  <div class="card-body">
-				<h3 th:text="#{transaccion.totalTransacciones}">Total Transacciones</h3>
-				<h4 class="display-4">
-				    <i class="fas fa-users">[[${totalTransacciones}]]</i>
+		    </div>
+		    <div class = "card text-center bg-success text-white mb-3">
+			  <div class = "card-body">
+				<h3 th:text = "#{transaccion.totalTransacciones}">Total Transacciones</h3>
+				<h4 class = "display-4">
+				    <i class = "fa-sharp fa-solid fa-money-from-bracket">[[${totalTransacciones}]]</i>
 				</h4>
 			  </div>
 		    </div>
 		</div>
 	  </div>
-    </div>
 </section>
 
 </body>

@@ -1,9 +1,6 @@
 package com.Java.com.CRUDJAVA.controller;
 
-import com.Java.com.CRUDJAVA.Dao.TransaccionDao;
-import com.Java.com.CRUDJAVA.model.Empleado;
 import com.Java.com.CRUDJAVA.model.Transaccion;
-import com.Java.com.CRUDJAVA.service.EmpleadoService;
 import com.Java.com.CRUDJAVA.service.TransaccionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +23,8 @@ public class TransaccionController {
         return "principal";
     }
 
-    @GetMapping("/tran")
-    public String principal(Model model,  @AuthenticationPrincipal User user){
+    @GetMapping("/transacciones")
+    public String plrincipa(Model model,  @AuthenticationPrincipal User user){
         var transacciones = transaccionService.listaTran();
         log.info("ejecutando el controlador Transacciones");
         var totalMonto= 0D;
@@ -35,30 +32,31 @@ public class TransaccionController {
             totalMonto += Double.parseDouble(p.getMonto());
         }
         model.addAttribute("totalMonto", totalMonto);
+        model.addAttribute("transacciones", transacciones);
         model.addAttribute("totalTransacciones", transacciones.size());
-        return "index1";
+        return "homeTransaccion";
     }
 
     @GetMapping("/agregarTran")
     public String agregar(Transaccion transaccion){
-        return "modificar";
+        return "modificarTran";
     }
 
     @PostMapping("/guardarTran")
     public String guardar(Transaccion transaccion){
         transaccionService.guardarTran(transaccion);
-        return  "redirect:/";
+        return  "redirect:/transacciones";
     }
     @GetMapping("/editarTran/{id}")
     public String editar(Transaccion transaccion, Model model){
         transaccion = transaccionService.buscarTran(transaccion);
         model.addAttribute("transaccion", transaccion);
-        return "modificar";
+        return "modificarTran";
     }
 
     @GetMapping("/eliminarTran")
     public String eliminar(Transaccion transaccion){
         transaccionService.eliminarTran(transaccion);
-        return "redirect:/";
+        return "redirect:/transacciones";
     }
 }

@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html xmlns = "http://www.w3.org/1999/xhtml"
 	xmlns:th = "http://www.thymeleaf.org"
-	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="Layout/plantilla :: head">
+>
+<head th:replace = "Layout/plantilla :: head">
     <meta charset = "UTF-8">
     <title>Login</title>
 </head>
 <body>
-	<header th:replace="Layout/plantilla :: header"></header>
-	<section id = "actions" class = "py-4 mb-4 bg-light">
-	    <div class = "container">
-		  <div class = "row">
-			<!-- Podemos agregar unos botones aqui-->
-		  </div>
-	    </div>
-	</section>
-	<section id = "login">
-	    <div class = "container">
-		  <div class = "row">
-			<div class = "col-md-6 mx-auto">
-			    <div class = "card">
-				  <div class = "card-header">
-					<h4>Login</h4>
-				  </div>
-				  <div class = "card-body">
-					<form method = "post" th:action = "@{/login}">
-					    <div class="form-group">
-						  <label for = "username">Username:</label>
-						  <input type = "text" name = "username" id = "username"/>
-					    </div>
-					    <div class="form-group">
-						  <label for = "password">Password:</label>
-						  <input type = "password" name = "password" id = "password"/>
-					    </div>
-					    <input type = "submit" value = "Login" class="btn btn-primary btn-block"/>
-					</form>
-				  </div>
-			    </div>
-			</div>
-		  </div>
-	    </div>
-	</section>
-	<footer th:replace="Layout/plantilla :: footer"></footer>
+<header th:replace = "Layout/plantilla :: headerLogin"></header>
+<section class = "py-4 mb-4 bg-light" id = "actions">
+    <div class = "container">
+	  <div class = "row">
+		<!-- Podemos agregar unos botones aqui-->
+	  </div>
+    </div>
+</section>
+<section id = "login">
+    <div class = "container">
+	  <div class = "row">
+		<div class = "col-md-6 mx-auto">
+		    <div class = "card">
+			  <div class = "card-header">
+				<h4>Login</h4>
+			  </div>
+			  <div class = "card-body">
+				<form method = "post" th:action = "@{/login}">
+				    <div class = "form-group">
+					  <label for = "username">Username:</label>
+					  <input id = "username" name = "username" type = "text"/>
+				    </div>
+				    <div class = "form-group">
+					  <label for = "password">Password: </label>
+					  <input id = "password" name = "password" type = "password"/>
+				    </div>
+				    <input class = "btn btn-primary btn-block" type = "submit" value = "Login"/>
+				</form>
+			  </div>
+		    </div>
+		</div>
+	  </div>
+    </div>
+</section>
+<footer th:replace = "Layout/plantilla :: footer"></footer>
 </body>
 </html>

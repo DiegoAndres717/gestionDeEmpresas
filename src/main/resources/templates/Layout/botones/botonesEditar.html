@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html xmlns = "http://www.w3.org/1999/xhtml"
 	xmlns:th = "http://www.thymeleaf.org"
-	xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+>
 <head>
     <meta charset = "UTF-8">
     <title>Botones Editar</title>
 </head>
 <body>
-<section th:fragment="botonesEditar">
-    <div id="actions" class="py-4 mb-4 bg-light">
-	  <div class="container">
-		<div class="row">
-		    <div class="col-md-3">
-			  <a th:href = "@{/usuarios}" class="btn btn-light btn-block">
-				<i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+<section th:fragment = "botonesEditar">
+    <div class = "py-4 mb-4 bg-light" id = "actions">
+	  <div class = "container">
+		<div class = "row">
+		    <div class = "col-md-3">
+			  <a class = "btn btn-light btn-block" th:href = "@{/usuarios}">
+				<i class = "fas fa-arrow-left"></i> [[#{accion.regresar}]]
 			  </a>
 		    </div>
-		    <div class="col-md-3">
-			  <button type="submit" class="btn btn-success btn-block">
-				<i class="fas fa-check"></i> [[#{accion.guardar}]]
+		    <div class = "col-md-3">
+			  <button class = "btn btn-success btn-block" type = "submit">
+				<i class = "fas fa-check"></i> [[#{accion.guardar}]]
 			  </button>
 		    </div>
-		    <div class="col-md-3">
-			  <a th:href = "@{/eliminar(idEmpleado=${empleado.idEmpleado})}" class="btn btn-danger btn-block">
-				<i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+		    <div class = "col-md-3">
+			  <a class = "btn btn-danger btn-block" th:href = "@{/eliminar(idEmpleado=${empleado.idEmpleado})}">
+				<i class = "fas fa-trash"></i> [[#{accion.eliminar}]]
 			  </a>
 		    </div>
 		</div>

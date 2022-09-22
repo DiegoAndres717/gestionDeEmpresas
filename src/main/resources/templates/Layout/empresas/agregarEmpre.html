@@ -7,31 +7,29 @@
     <title>Agregar Transacciones</title>
 </head>
 <body>
-<section th:fragment = "agregarTran">
-    <div class = "modal fade" id = "agregarTran">
+<section th:fragment = "agregarEmpre">
+    <div class = "modal fade" id = "agregarEmpre">
 	  <div class = "modal-dialog modal-lg">
 		<div class = "modal-content">
 		    <div class = "modal-header bg-info text-white">
-			  <h5 class = "modal-title" th:text = "#{accion.agregar-tran}">Agregar Usuario</h5>
+			  <h5 class = "modal-title" th:text = "#{accion.agregar-empre}">Agregar Usuario</h5>
 			  <button aria-label = "Close" class = "btn-close" data-bs-dismiss = "modal" type = "button">
 				<span></span>
 			  </button>
 		    </div>
-		    <form class = "was-validated" method = "post" th:action = "@{/guardarTran}"
-			    th:object = "${transaccion}">
+		    <form class = "was-validated" method = "post" th:action = "@{/guardarEmpre}" th:object = "${empresa}">
 			  <div class = "modal-body">
 				<div class = "form-group">
-				    <label for = "nombre" th:text = "#{tran.concepto}">Concepto</label>
-				    <input class = "form-control" name = "transaccion.concepto" required = "true" type = "text">
+				    <label for = "nombre" th:text = "#{empleado.nombre}">Concepto</label>
+				    <input class = "form-control" name = "empresa.nombre" required = "true" type = "text">
 				</div>
 				<div class = "form-group">
-				    <label for = "monto" th:text = "#{tran.monto}">Monto</label>
-				    <input class = "form-control" name = "transaccion.monto" required = "true" type = "number">
+				    <label for = "direccion" th:text = "#{empleado.direccion}">Monto</label>
+				    <input class = "form-control" name = "empresa.direccion" required = "true" type = "text">
 				</div>
 				<div class = "form-group">
-				    <label for = "createdAt" th:text = "#{tran.fecha}">Fecha</label>
-				    <input class = "form-control" name = "transaccion.createdAt" required = "true"
-					     type = "date">
+				    <label for = "telefono" th:text = "#{empleado.telefono}">Fecha</label>
+				    <input class = "form-control" name = "empresa.telefono" required = "true" type = "tel">
 				</div>
 			  </div>
 			  <div class = "modal-footer">

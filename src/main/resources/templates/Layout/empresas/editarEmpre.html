@@ -4,13 +4,13 @@
 >
 <head>
     <meta charset = "UTF-8">
-    <title>Editar Cliente</title>
+    <title>Editar Transacciones</title>
 </head>
 <body>
-<section th:fragment = "editarUsuario">
-    <form class = "was-validated" method = "post" th:action = "@{/guardar}" th:object = "${empleado}">
-	  <input name = "idEmpleado" th:field = "*{idEmpleado}" type = "hidden"/>
-	  <section th:replace = "Layout/botones/botonesEditar :: botonesEditar"></section>
+<section th:fragment = "editarEmpre">
+    <form class = "was-validated" method = "post" th:action = "@{/guardarEmpre}" th:object = "${empresa}">
+	  <input name = "id" th:field = "*{id}" type = "hidden"/>
+	  <section th:replace = "Layout/botones/botonesEditarEmpre :: botonesEditarEmpre"></section>
 	  <div id = "details">
 		<div class = "container">
 		    <div class = "row">
@@ -23,17 +23,17 @@
 					  <div class = "form-group">
 						<label for = "nombre">[[#{empleado.nombre}]]</label>
 						<input class = "form-control" name = "nombre" required = "true"
-							 th:field = "*{perfil.nombre}" type = "text"/>
+							 th:field = "*{nombre}" type = "text"/>
 					  </div>
 					  <div class = "form-group">
-						<label for = "email">[[#{empleado.email}]]</label>
-						<input class = "form-control" name = "email"
-							 required = "true" th:field = "*{email}" type = "email"/>
+						<label for = "direccion">[[#{empleado.direccion}]]</label>
+						<input class = "form-control" name = "direccion"
+							 required = "true" th:field = "*{direccion}" type = "text"/>
 					  </div>
 					  <div class = "form-group">
 						<label for = "telefono">[[#{empleado.telefono}]]</label>
 						<input class = "form-control" name = "telefono" required = "true"
-							 th:field = "*{perfil.telefono}" type = "tel"/>
+							 th:field = "*{telefono}" type = "tel"/>
 					  </div>
 				    </div>
 				</div>

@@ -1,61 +1,40 @@
 package com.Java.com.CRUDJAVA.service;
 
+import com.Java.com.CRUDJAVA.Dao.EmpresaDao;
+import com.Java.com.CRUDJAVA.Repository.IEmpresa;
 import com.Java.com.CRUDJAVA.model.Empresa;
-import com.Java.com.CRUDJAVA.Dao.IEmpresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
 
 @Service
-public class EmpresaService {
-
-    private IEmpresa iEmpresa;
+public class EmpresaService implements IEmpresa {
 
     @Autowired
-    public void setRepositiry (IEmpresa  iEmpresa){
-        this.iEmpresa = iEmpresa;
+    EmpresaDao empresaDao;
+    @Override
+    @Transactional(readOnly = true)
+    public List<Empresa> listaEmpresas() {
+        return empresaDao.findAll();
     }
 
-    ArrayList<Empresa> listaE;
-    public EmpresaService(ArrayList<Empresa> listaE) {
-
-        this.listaE = listaE;
-    }
-    public List<Empresa> mostrarEmpresa(){
-        return iEmpresa.findAll();
-
-    }
-    public boolean existsByIdEmpresa(Long id){
-        return iEmpresa.existsById(id);
-    }
-    public Optional<Empresa> getEmpresa(Long id){
-        return  iEmpresa.findById(id);
+    @Override
+    @Transactional
+    public void guardar(Empresa empresa) {
+        empresaDao.save(empresa);
     }
 
-
-    public Boolean insertarEmpresaJPA(Empresa empresa){
-        try {
-            iEmpresa.save(empresa);
-        }catch (Exception e){
-
-            return Boolean.FALSE;
-        }
-        return Boolean.TRUE;
-    }
-    public Boolean actualizarTodoJPA (Empresa empresa){
-
-        try {
-            iEmpresa.save(empresa);
-        }catch (Exception e){
-
-            return Boolean.FALSE;
-        }
-        return Boolean.TRUE;
+    @Override
+    @Transactional
+    public void eliminar(Empresa empresa) {
+        empresaDao.delete(empresa);
     }
 
-    public void deleteEmpresaById (Long id){
-
-        iEmpresa.deleteById(id);
+    @Override
+    @Transactional(readOnly = true)
+    public Empresa buscar(Empresa empresa) {
+        return empresaDao.findById(empresa.getId()).orElse(null);
     }
 }
