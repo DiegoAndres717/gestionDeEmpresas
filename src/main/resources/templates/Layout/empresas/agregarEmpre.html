@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+>
+<head>
+    <meta charset = "UTF-8">
+    <title>Agregar Transacciones</title>
+</head>
+<body>
+<section th:fragment = "agregarEmpre">
+    <div class = "modal fade" id = "agregarEmpre">
+	  <div class = "modal-dialog modal-lg">
+		<div class = "modal-content">
+		    <div class = "modal-header bg-info text-white">
+			  <h5 class = "modal-title" th:text = "#{accion.agregar-empre}">Agregar Usuario</h5>
+			  <button aria-label = "Close" class = "btn-close" data-bs-dismiss = "modal" type = "button">
+				<span></span>
+			  </button>
+		    </div>
+		    <form class = "was-validated" method = "post" th:action = "@{/guardarEmpre}" th:object = "${empresa}">
+			  <div class = "modal-body">
+				<div class = "form-group">
+				    <label for = "nombre" th:text = "#{empleado.nombre}">Concepto</label>
+				    <input class = "form-control" name = "empresa.nombre" required = "true" type = "text">
+				</div>
+				<div class = "form-group">
+				    <label for = "direccion" th:text = "#{empleado.direccion}">Monto</label>
+				    <input class = "form-control" name = "empresa.direccion" required = "true" type = "text">
+				</div>
+				<div class = "form-group">
+				    <label for = "telefono" th:text = "#{empleado.telefono}">Fecha</label>
+				    <input class = "form-control" name = "empresa.telefono" required = "true" type = "tel">
+				</div>
+			  </div>
+			  <div class = "modal-footer">
+				<button class = "btn btn-primary" th:text = "#{accion.guardar}" type = "submit">Guardar</button>
+			  </div>
+		    </form>
+		</div>
+	  </div>
+    </div>
+</section>
+</body>
+</html>

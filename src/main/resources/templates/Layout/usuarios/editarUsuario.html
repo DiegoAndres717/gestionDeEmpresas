@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+>
+<head>
+    <meta charset = "UTF-8">
+    <title>Editar Cliente</title>
+</head>
+<body>
+<section th:fragment = "editarUsuario">
+    <form class = "was-validated" method = "post" th:action = "@{/guardar}" th:object = "${empleado}">
+	  <input name = "idEmpleado" th:field = "*{idEmpleado}" type = "hidden"/>
+	  <section th:replace = "Layout/botones/botonesEditar :: botonesEditar"></section>
+	  <div id = "details">
+		<div class = "container">
+		    <div class = "row">
+			  <div class = "col">
+				<div class = "card">
+				    <div class = "card-header">
+					  <h4 [[#{accion.editar}]]></h4>
+				    </div>
+				    <div class = "card-body">
+					  <div class = "form-group">
+						<label for = "nombre">[[#{empleado.nombre}]]</label>
+						<input class = "form-control" name = "nombre" required = "true"
+							 th:field = "*{perfil.nombre}" type = "text"/>
+					  </div>
+					  <div class = "form-group">
+						<label for = "email">[[#{empleado.email}]]</label>
+						<input class = "form-control" name = "email"
+							 required = "true" th:field = "*{email}" type = "email"/>
+					  </div>
+					  <div class = "form-group">
+						<label for = "telefono">[[#{empleado.telefono}]]</label>
+						<input class = "form-control" name = "telefono" required = "true"
+							 th:field = "*{perfil.telefono}" type = "tel"/>
+					  </div>
+				    </div>
+				</div>
+			  </div>
+		    </div>
+		</div>
+	  </div>
+    </form>
+</section>
+</body>
+</html>

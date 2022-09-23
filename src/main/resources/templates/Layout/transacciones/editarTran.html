@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+>
+<head>
+    <meta charset = "UTF-8">
+    <title>Editar Transacciones</title>
+</head>
+<body>
+<section th:fragment = "editarTran">
+    <form class = "was-validated" method = "post" th:action = "@{/guardarTran}" th:object = "${transaccion}">
+	  <input name = "id" th:field = "*{id}" type = "hidden"/>
+	  <section th:replace = "Layout/botones/botonesEditarTran :: botonesEditarTran"></section>
+	  <div id = "details">
+		<div class = "container">
+		    <div class = "row">
+			  <div class = "col">
+				<div class = "card">
+				    <div class = "card-header">
+					  <h4 [[#{accion.editar}]]></h4>
+				    </div>
+				    <div class = "card-body">
+					  <div class = "form-group">
+						<label for = "concepto">[[#{tran.concepto}]]</label>
+						<input class = "form-control" name = "concepto" required = "true"
+							 th:field = "*{concepto}" type = "text"/>
+					  </div>
+					  <div class = "form-group">
+						<label for = "monto">[[#{tran.monto}]]</label>
+						<input class = "form-control" name = "monto"
+							 required = "true" th:field = "*{monto}" type = "number"/>
+					  </div>
+					  <div class = "form-group">
+						<label for = "createdAt">[[#{tran.fecha}]]</label>
+						<input class = "form-control" name = "createdAt" required = "true"
+							 th:field = "*{createdAt}" type = "date"/>
+					  </div>
+				    </div>
+				</div>
+			  </div>
+		    </div>
+		</div>
+	  </div>
+    </form>
+</section>
+</body>
+</html>

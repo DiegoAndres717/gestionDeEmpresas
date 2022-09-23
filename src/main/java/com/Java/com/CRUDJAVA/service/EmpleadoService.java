@@ -1,63 +1,41 @@
 package com.Java.com.CRUDJAVA.service;
 
+import com.Java.com.CRUDJAVA.Repository.IEmpleado;
 import com.Java.com.CRUDJAVA.model.Empleado;
-import com.Java.com.CRUDJAVA.repository.IEmpleado;
+import com.Java.com.CRUDJAVA.Dao.EmpleadoDao;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 @Data
 @Service
-public class EmpleadoService {
-    private IEmpleado iEmpleado;
+public class EmpleadoService implements IEmpleado {
 
     @Autowired
-    public void setRepositiry (IEmpleado  iEmpleado){
-        this.iEmpleado = iEmpleado;
+    private EmpleadoDao empleadoDao;
+    @Override
+    @Transactional(readOnly = true)
+    public List<Empleado> listaPersonaas() {
+        return (List<Empleado>) empleadoDao.findAll();
     }
 
-    ArrayList<Empleado> listaE;
-    public EmpleadoService(ArrayList<Empleado> listaE) {
-
-        this.listaE = listaE;
-    }
-    public List<Empleado> mostrarEmpleado(){
-        return iEmpleado.findAll();
-
-    }
-    public boolean existsByIdEmpleado(Long id){
-        return iEmpleado.existsById(id);
-    }
-    public Optional<Empleado> getEmpleado(Long id){
-        return  iEmpleado.findById(id);
+    @Override
+    @Transactional
+    public void guardar(Empleado empleado) {
+        empleadoDao.save(empleado);
     }
 
-
-    public Boolean insertarPersonaJPA(Empleado empleado){
-        try {
-            iEmpleado.save(empleado);
-        }catch (Exception e){
-
-            return Boolean.FALSE;
-        }
-        return Boolean.TRUE;
-    }
-    public Boolean actualizarTodoJPA (Empleado empleado){
-
-        try {
-            iEmpleado.save(empleado);
-        }catch (Exception e){
-
-            return Boolean.FALSE;
-        }
-        return Boolean.TRUE;
+    @Override
+    @Transactional
+    public void eliminar(Empleado empleado) {
+        empleadoDao.delete(empleado);
     }
 
-    public void deleteEmpleadoById (Long id){
-
-        iEmpleado.deleteById(id);
+    @Override
+    @Transactional(readOnly = true)
+    public Empleado buscar(Empleado empleado) {
+        return empleadoDao.findById(empleado.getIdEmpleado()).orElse(null);
     }
 }

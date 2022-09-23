@@ -1,6 +1,5 @@
-package com.Java.com.CRUDJAVA.repository;
+package com.Java.com.CRUDJAVA.Dao;
 
-import com.Java.com.CRUDJAVA.model.Empleado;
 import com.Java.com.CRUDJAVA.model.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,8 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IEmpresa extends JpaRepository<Empresa,Long> {
-    @Override
-    List<Empresa> findAll();
+public interface EmpresaDao extends JpaRepository<Empresa,Long> {
+
 
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+>
+<head th:replace = "Layout/plantilla :: head">
+    <meta charset = "UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+<header th:replace = "Layout/plantilla :: headerGestion"></header>
+<section th:replace = "Layout/botones/botonesAgregarEmpre :: botonesAgregarEmpre"></section>
+<section th:replace = "Layout/empresas/agregarEmpre :: agregarEmpre"></section>
+<section th:replace = "Layout/empresas/listaEmpre :: listaEmpre"></section>
+<footer th:replace = "Layout/plantilla :: footer"></footer>
+</body>
+</html>
