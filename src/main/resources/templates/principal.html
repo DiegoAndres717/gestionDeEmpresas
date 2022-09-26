@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns = "http://www.w3.org/1999/xhtml"
-	xmlns:th = "http://www.thymeleaf.org"
->
-<head th:replace = "Layout/plantilla :: head">>
+	xmlns:th = "http://www.thymeleaf.org">
+<head th:replace = "Layout/plantilla :: head">
     <meta charset = "UTF-8">
     <title>Principal</title>
 </head>
@@ -10,41 +9,37 @@
 <header th:replace = "Layout/plantilla :: headerP"></header>
 <div class = "card text-center">
     <div class = "card-header">
-	  Featured
     </div>
     <div class = "card-body">
-	  <h5 class = "card-title">Special title treatment</h5>
-	  <p class = "card-text">With supporting text below as a natural lead-in to additional content.</p>
-	  <a class = "btn btn-primary" th:href = "@{/usuarios}">Usuarios</a>
+	  <img src="https://www.mrlogisticaltda.com/wp-content/uploads/2019/08/usuario-registrados.png"
+		 class="img-fluid" alt="Usuarios">
+	  <a class = "btn btn-primary text-center" th:href = "@{/usuarios}">Usuarios</a>
     </div>
     <div class = "card-footer text-muted">
-	  2 days ago
     </div>
 </div>
 <div class = "card text-center">
     <div class = "card-header">
-	  Featured
     </div>
     <div class = "card-body">
-	  <h5 class = "card-title">Special title treatment</h5>
-	  <p class = "card-text">With supporting text below as a natural lead-in to additional content.</p>
-	  <a class = "btn btn-primary" th:href = "@{/transacciones}">Transaaciones</a>
+	  <img src="https://previews.123rf.com/images/blossomstar/blossomstar1708/blossomstar170800210/84050328-concepto-de-transacciones-en-l%C3%ADnea.jpg"
+		 class="img-fluid" alt="Transacciones" width="256"
+		 height="256">
+	  <a class = "btn btn-primary" th:href = "@{/transacciones}">Transacciones</a>
     </div>
     <div class = "card-footer text-muted">
-	  2 days ago
     </div>
 </div>
 <div class = "card text-center">
     <div class = "card-header">
-	  Featured
     </div>
     <div class = "card-body">
-	  <h5 class = "card-title">Special title treatment</h5>
-	  <p class = "card-text">With supporting text below as a natural lead-in to additional content.</p>
+	  <img src="https://prod-discovery.edx-cdn.org/media/course/image/b3d519fb-8735-4384-b684-297dae966ecf-be8865f85564.small.jpg"
+		 class="img-fluid" alt="Empresas" width="256"
+		 height="256">
 	  <a class = "btn btn-primary" th:href = "@{/empresas}">Empresas</a>
     </div>
     <div class = "card-footer text-muted">
-	  2 days ago
     </div>
 </div>
 <footer th:replace = "Layout/plantilla :: footer"></footer>

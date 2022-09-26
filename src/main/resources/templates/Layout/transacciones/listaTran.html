@@ -23,8 +23,7 @@
 					  <th th:text = "#{tran.concepto}">Concepto</th>
 					  <th th:text = "#{tran.monto}">Monto</th>
 					  <th th:text = "#{tran.fecha}">Fecha</th>
-					  
-					  <th></th>
+S					  <th></th>
 					  <th></th>
 				    </tr>
 				    </thead>
@@ -34,9 +33,8 @@
 					  <td>[[${transaccion.concepto}]]</td>
 					  <td>[[${transaccion.monto}]]</td>
 					  <td>[[${transaccion.createdAt}]]</td>
-					  
 					  <td>
-						<a class = "btn btn-secundary" sec:authorize = "hasRole('ROLE_ADMIN')"
+						<a class = "btn btn-secundary"
 						   th:href =
 							  "@{/editarTran/} + ${transaccion.id}">
 						    <i class = "fas fa-angle-double-right"></i> [[#{accion.editar}]]
@@ -74,13 +72,14 @@
 			  <div class = "card-body">
 				<h3 th:text = "#{transaccion.totalTransacciones}">Total Transacciones</h3>
 				<h4 class = "display-4">
-				    <i class = "fa-sharp fa-solid fa-money-from-bracket">[[${totalTransacciones}]]</i>
+				    <i class="bi bi-cash-stack"></i>
+				    <i class = "fas fa-sharp fa-solid fa-money-from-bracket">[[${totalTransacciones}]]</i>
 				</h4>
 			  </div>
 		    </div>
 		</div>
 	  </div>
+    </div>
 </section>
-
 </body>
 </html>

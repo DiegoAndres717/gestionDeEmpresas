@@ -13,7 +13,7 @@
 		<div class = "col-md-9">
 		    <div class = "card">
 			  <div class = "card-header">
-				<h4>[[#{tran.lista}]]</h4>
+				<h4>[[#{empre.lista}]]</h4>
 			  </div>
 			  <div th:if = "${empresas != null and !empresas.empty}">
 				<table class = "table table-stryped">
@@ -66,13 +66,13 @@
 			  <div class = "card-body">
 				<h3 th:text = "#{empresa.totalEmpresas}">Total Empresas</h3>
 				<h4 class = "display-4">
-				    <i class = "fas fa-solid fa-city">[[${totalEmpresas}]]</i>
+				    <i class = "fas fa-solid fa-city">  [[${totalEmpresas}]]</i>
 				</h4>
 			  </div>
 		    </div>
 		</div>
 	  </div>
+    </div>
 </section>
-
 </body>
 </html>

@@ -1,7 +1,11 @@
 package com.Java.com.CRUDJAVA.controller;
 
 import com.Java.com.CRUDJAVA.model.Empleado;
+import com.Java.com.CRUDJAVA.model.Perfil;
+import com.Java.com.CRUDJAVA.model.Rol;
 import com.Java.com.CRUDJAVA.service.EmpleadoService;
+import com.Java.com.CRUDJAVA.service.RolService;
+import com.Java.com.CRUDJAVA.service.ServicePerfil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,6 +21,11 @@ public class EmpleadoController {
 
     @Autowired
     private EmpleadoService empleadoService;
+    @Autowired
+    private ServicePerfil servicePerfil;
+
+    @Autowired
+    private RolService rolService;
 
     @GetMapping("/")
     public String inicio(Model model, @AuthenticationPrincipal User user){
@@ -40,14 +49,18 @@ public class EmpleadoController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(Empleado empleado){
+    public String guardar(Empleado empleado, Perfil perfil, Rol rol){
         empleadoService.guardar(empleado);
+        servicePerfil.guardarP(perfil);
+        rolService.guardarR(rol);
         return  "redirect:/usuarios";
     }
     @GetMapping("/editar/{idEmpleado}")
-    public String editar(Empleado empleado, Model model){
+    public String editar(Empleado empleado, Model model, Perfil perfil){
         empleado = empleadoService.buscar(empleado);
+        perfil = servicePerfil.buscarP(perfil);
         model.addAttribute("empleado", empleado);
+        model.addAttribute("perfil", perfil);
         return "modificar";
     }
 

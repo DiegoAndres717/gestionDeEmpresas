@@ -3,8 +3,10 @@ package com.Java.com.CRUDJAVA.model;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,13 +22,12 @@ public class Empleado implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmpleado;
     private String email;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPerfil")
     private Perfil perfil;
 
-
-    private Enum_RolName role;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idEmpresa")
     private Empresa empresa;
 
