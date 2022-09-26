@@ -2,6 +2,7 @@ package com.Java.com.CRUDJAVA.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +22,7 @@ import java.util.List;
 @Table(name = "perfil")
 public class Perfil {
     @Id
+    @Column()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nombre;
@@ -32,10 +35,8 @@ public class Perfil {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateAt;
 
-    @NotEmpty
     private String username;
 
-    @NotEmpty
     private String password;
 
     @OneToMany

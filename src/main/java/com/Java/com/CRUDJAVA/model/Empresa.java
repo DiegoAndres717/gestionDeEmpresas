@@ -1,11 +1,14 @@
 package com.Java.com.CRUDJAVA.model;
 
 import com.Java.com.CRUDJAVA.service.EmpleadoService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +23,7 @@ public class Empresa {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
         private String  nombre;
+
         private String  documento;
         private String  telefono;
         private String  direccion;

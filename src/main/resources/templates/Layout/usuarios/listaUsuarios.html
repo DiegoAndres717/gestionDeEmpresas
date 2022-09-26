@@ -33,13 +33,7 @@
 					  <td>[[${empleado.perfil.nombre}]]</td>
 					  <td>[[${empleado.email}]]</td>
 					  <td>[[${empleado.perfil.telefono}]]</td>
-					  <td>
-						<a class = "btn btn-secundary" sec:authorize = "hasRole('ROLE_ADMIN')"
-						   th:href =
-							  "@{/editar/} + ${empleado.idEmpleado}">
-						    <i class = "fas fa-angle-double-right"></i> [[#{accion.editar}]]
-						</a>
-					  </td>
+					  
 					  <td>
 						<a class = "btn btn-dark" sec:authorize = "hasRole('ROLE_ADMIN')"
 						   th:href =
@@ -64,7 +58,7 @@
 			  <div class = "card-body">
 				<h3 th:text = "#{empleado.totalUsuarios}">Total Usuarios</h3>
 				<h4 class = "display-4">
-				    <i class = "fas fa-users">[[${totalUsuarios}]]</i>
+				    <i class = "fas fa-users">  [[${totalUsuarios}]]</i>
 				</h4>
 			  </div>
 		    </div>

@@ -1,6 +1,10 @@
 package com.Java.com.CRUDJAVA.controller;
 
+import com.Java.com.CRUDJAVA.model.Empleado;
+import com.Java.com.CRUDJAVA.model.Perfil;
 import com.Java.com.CRUDJAVA.model.Transaccion;
+import com.Java.com.CRUDJAVA.service.EmpleadoService;
+import com.Java.com.CRUDJAVA.service.ServicePerfil;
 import com.Java.com.CRUDJAVA.service.TransaccionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,9 @@ public class TransaccionController {
     @Autowired
     private TransaccionService transaccionService;
 
+    @Autowired
+    private ServicePerfil servicePerfil;
+
     @GetMapping("/tr")
     public String inicio(Model model, @AuthenticationPrincipal User user){
         log.info("ejecutando el controlador Principal");
@@ -24,8 +31,9 @@ public class TransaccionController {
     }
 
     @GetMapping("/transacciones")
-    public String plrincipa(Model model,  @AuthenticationPrincipal User user){
+    public String plrincipa(Model model, @AuthenticationPrincipal User user){
         var transacciones = transaccionService.listaTran();
+        var perfiles = servicePerfil.listaPersonas();
         log.info("ejecutando el controlador Transacciones");
         var totalMonto= 0D;
         for (var p: transacciones){
@@ -34,6 +42,7 @@ public class TransaccionController {
         model.addAttribute("totalMonto", totalMonto);
         model.addAttribute("transacciones", transacciones);
         model.addAttribute("totalTransacciones", transacciones.size());
+        model.addAttribute("perfiles", perfiles);
         return "homeTransaccion";
     }
 
