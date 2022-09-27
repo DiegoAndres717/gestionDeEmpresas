@@ -23,11 +23,9 @@ public class Empresa {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
         private String  nombre;
-
         private String  documento;
         private String  telefono;
         private String  direccion;
-
         private Date createdAt;
         private Date updateAt;
 

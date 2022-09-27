@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns = "http://www.w3.org/1999/xhtml"
-	xmlns:th = "http://www.thymeleaf.org"
->
+	xmlns:th = "http://www.thymeleaf.org">
 <head>
     <meta charset = "UTF-8">
     <title>Agregar Transacciones</title>
@@ -21,7 +20,7 @@
 			    th:object = "${transaccion}">
 			  <div class = "modal-body">
 				<div class = "form-group">
-				    <label for = "nombre" th:text = "#{tran.concepto}">Concepto</label>
+				    <label for = "concepto" th:text = "#{tran.concepto}">Concepto</label>
 				    <input class = "form-control" name = "concepto" required = "true" type = "text">
 				</div>
 				<div class = "form-group">
