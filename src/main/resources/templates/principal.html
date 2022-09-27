@@ -7,41 +7,20 @@
 </head>
 <body>
 <header th:replace = "Layout/plantilla :: headerP"></header>
+
 <div class = "card text-center">
-    <div class = "card-header">
-    </div>
+
     <div class = "card-body">
-	  <img src="https://www.mrlogisticaltda.com/wp-content/uploads/2019/08/usuario-registrados.png"
-		 class="img-fluid" alt="Usuarios">
-	  <a class = "btn btn-primary text-center" th:href = "@{/usuarios}">Usuarios</a>
+        <div class = "card-body">
+        <a class = "btn btn-outline-info" th:href = "@{/usuarios}"><img src="https://64.media.tumblr.com/44a0fcbd47105af59b9315a45c477fba/e6bb0fd26146d426-67/s640x960/737030e170cdc2b3004ef13a18acd4c1402a4756.pnj" class="img-fluid" alt="Usuarios"></a>
     </div>
-    <div class = "card-footer text-muted">
+	  <a class = "btn btn-outline-info" th:href = "@{/transacciones}"><img src="https://64.media.tumblr.com/b8cdec223990a7c98fb39a0aa2c994e8/24454d76c894407c-0e/s640x960/cfcd5ee07bcbb4a007f1d0d01100ae28d35bdd8e.pnj" class="img-fluid" alt="Transacciones"></a>
+        <div class = "card-body">
+            <a class = "btn btn-outline-info" th:href = "@{/empresas}"><img src="https://64.media.tumblr.com/db14bd2bf3920dd109493719bedefd0c/579b151f8917b43b-47/s640x960/5b3274c630cd7c1761c1e4d2493e7c3b165a3fbb.pnj" class="img-fluid" alt="Empresas"></a>
+        </div>
     </div>
 </div>
-<div class = "card text-center">
-    <div class = "card-header">
-    </div>
-    <div class = "card-body">
-	  <img src="https://previews.123rf.com/images/blossomstar/blossomstar1708/blossomstar170800210/84050328-concepto-de-transacciones-en-l%C3%ADnea.jpg"
-		 class="img-fluid" alt="Transacciones" width="256"
-		 height="256">
-	  <a class = "btn btn-primary" th:href = "@{/transacciones}">Transacciones</a>
-    </div>
-    <div class = "card-footer text-muted">
-    </div>
-</div>
-<div class = "card text-center">
-    <div class = "card-header">
-    </div>
-    <div class = "card-body">
-	  <img src="https://prod-discovery.edx-cdn.org/media/course/image/b3d519fb-8735-4384-b684-297dae966ecf-be8865f85564.small.jpg"
-		 class="img-fluid" alt="Empresas" width="256"
-		 height="256">
-	  <a class = "btn btn-primary" th:href = "@{/empresas}">Empresas</a>
-    </div>
-    <div class = "card-footer text-muted">
-    </div>
-</div>
+
 <footer th:replace = "Layout/plantilla :: footer"></footer>
 </body>
 </html>
